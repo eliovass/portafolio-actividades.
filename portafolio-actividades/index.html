@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Actividades</title>
+    <!-- Bootstrap CSS para diseño responsive -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados mejorados -->
+    <style>
+        body {
+            background-image: url('./images/background.jpg'); /* Imagen de fondo local */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #0056b3, #007bff) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .nav-link {
+            color: white !important;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 25px;
+            background: linear-gradient(90deg, #007bff, #00c4ff);
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            background: linear-gradient(90deg, #00c4ff, #66d9ff);
+            transform: scale(1.05);
+            color: white !important;
+        }
+        .home-section {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/background.jpg');
+            background-size: cover;
+            color: white;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .home-section h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease-in-out;
+        }
+        .home-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 20px auto;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .container {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(230, 230, 230, 0.95));
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 1200px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        h2 {
+            color: #0056b3;
+            margin-bottom: 20px;
+        }
+        .section {
+            display: none;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .carousel-inner img, .floating-images img {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .floating-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .floating-images img:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.05);
+            margin-top: auto;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section.active {
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Portafolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home" onclick="showSection('home')">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#semana2-avion" onclick="showSection('semana2-avion')">Semana 2: Avión de Papel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#semana2-marco" onclick="showSection('semana2-marco')">Semana 2: Marco Conceptual</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#semana3-marco-habilidades" onclick="showSection('semana3-marco-habilidades')">Semana 3: Marco y Habilidades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#semana4-habilidades" onclick="showSection('semana4-habilidades')">Semana 4: Habilidades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gestion-integracion" onclick="showSection('gestion-integracion')">Gestión de Integración</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gestion-alcance" onclick="showSection('gestion-alcance')">Gestión de Alcance</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="home" class="home-section">
+        <h1>Bienvenido a mi Portafolio de Actividades</h1>
+        <p>Explora mis proyectos y mapas conceptuales organizados por semanas, diseñados para mostrar habilidades en gestión de proyectos.</p>
+    </div>
+
+    <div class="container">
+        <div id="semana2-avion" class="section card p-4">
+            <h2>Semana 2: Proyecto Avión de Papel</h2>
+            <div id="carouselSemana2Avion" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active"><img src="./images/avion1.jpg" class="d-block w-100" alt="Imagen 1 - Avión de Papel"></div>
+                    <div class="carousel-item"><img src="./images/avion2.jpg" class="d-block w-100" alt="Imagen 2 - Avión de Papel"></div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselSemana2Avion" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselSemana2Avion" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+            </div>
+        </div>
+
+        <div id="semana2-marco" class="section card p-4">
+            <h2>Semana 2: Marco Conceptual de la Administración de Proyectos</h2>
+            <div id="carouselSemana2Marco" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active"><img src="./images/marco1.jpg" class="d-block w-100" alt="Imagen 1 - Marco Conceptual"></div>
+                    <div class="carousel-item"><img src="./images/marco2.jpg" class="d-block w-100" alt="Imagen 2 - Marco Conceptual"></div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselSemana2Marco" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselSemana2Marco" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+            </div>
+        </div>
+
+        <div id="semana3-marco-habilidades" class="section card p-4">
+            <h2>Semana 3: Marco Conceptual y Habilidades del Director de Proyectos</h2>
+            <div class="floating-images">
+                <img src="./images/semana3.jpg" alt="Imagen - Marco y Habilidades">
+            </div>
+        </div>
+
+        <div id="semana4-habilidades" class="section card p-4">
+            <h2>Semana 4: Habilidades del Director de Proyectos</h2>
+            <div class="floating-images">
+                <img src="./images/habilidad1.jpg" alt="Imagen 1 - Habilidades">
+                <img src="./images/habilidad2.jpg" alt="Imagen 2 - Habilidades">
+                <img src="./images/habilidad3.jpg" alt="Imagen 3 - Habilidades">
+                <img src="./images/habilidad4.jpg" alt="Imagen 4 - Habilidades">
+                <img src="./images/habilidad5.jpg" alt="Imagen 5 - Habilidades">
+                <img src="./images/habilidad6.jpg" alt="Imagen 6 - Habilidades">
+                <img src="./images/habilidad7.jpg" alt="Imagen 7 - Habilidades">
+                <img src="./images/habilidad8.jpg" alt="Imagen 8 - Habilidades">
+            </div>
+        </div>
+
+        <div id="gestion-integracion" class="section card p-4">
+            <h2>Mapa Conceptual: Gestión de Integración</h2>
+            <div class="floating-images">
+                <img src="./images/integracion.jpg" alt="Imagen - Gestión de Integración">
+            </div>
+        </div>
+
+        <div id="gestion-alcance" class="section card p-4">
+            <h2>Mapa Conceptual: Gestión de Alcance</h2>
+            <div class="floating-images">
+                <img src="./images/alcance.jpg" alt="Imagen - Gestión de Alcance">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Portafolio creado en 2025 | Desarrollado con ❤️</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script para mostrar secciones -->
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        // Mostrar la sección de inicio por defecto
+        showSection('home');
+    </script>
+</body>
+</html>
